@@ -5,34 +5,53 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".card").innerHTML = generateRandomNumber();
-};
+  generarCartaAleatoria();
+  function generarCartaAleatoria() {
+    const palos = ["♠", "♥", "♦", "♣"];
+    const valores = [
+      "A",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "J",
+      "Q",
+      "K"
+    ];
 
-let generateRandomNumber = () => {
-  let numbers = [
-    "A",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K"
-  ];
-  let indexNumbers = Math.floor(Math.random() * numbers.length);
-  return numbers[indexNumbers];
-};
+    const paloAleatorio = palos[Math.floor(Math.random() * palos.length)];
+    const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
 
-let generateRandomSuit = () => {
-  let suit = ["♦", "♥", "♠", "♣"];
-  let indexSuit = Math.floor(Math.random() * suit.length);
-  return suit[indexSuit];
-};
+    let paloSuperior = document.querySelector("#top-sign");
+    let numeroAleatorio = document.querySelector("#card-number");
+    let paloInferior = document.querySelector("#bottom-sign");
 
-//♦ ♥ ♠ ♣
+    if (paloAleatorio === "♠") {
+      paloSuperior.className = "palos pica";
+      paloInferior.className = "palos-footer palos pica";
+    } else if (paloAleatorio === "♥") {
+      paloSuperior.className = "palos heart";
+      paloInferior.className = "palos-footer palos heart";
+    } else if (paloAleatorio === "♦") {
+      paloSuperior.className = "palos diamond";
+      paloInferior.className = "palos-footer palos diamond";
+    } else {
+      paloSuperior.className = "palos trebol";
+      paloInferior.className = "palos-footer palos trebol";
+    }
+
+    paloSuperior.innerHTML = paloAleatorio;
+    numeroAleatorio.innerHTML = valorAleatorio;
+    paloInferior.innerHTML = paloAleatorio;
+  }
+
+  const button = document.querySelector("#card-button");
+  button.addEventListener("click", () => {
+    generarCartaAleatoria();
+  });
+};

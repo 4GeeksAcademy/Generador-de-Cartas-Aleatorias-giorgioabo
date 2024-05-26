@@ -2,31 +2,34 @@
 
 body {
   background-color: green;
-  box-sizing: border-box;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25rem;
+  margin-top: 2rem;
 }
 
-.card {
+.palos,
+.palos-footer {
+  font-size: 8rem;
+}
+
+.heart,
+.diamond {
+  color: red;
+}
+.trebol,
+.pica {
+  color: black;
+}
+
+.number {
   text-align: center;
-  display: inline-block;
-  margin: auto;
-  height: 400px;
-  width: 250px;
-  padding: 20px;
-  padding-top: 120px;
-  font-size: 100px;
-  border: 1px solid black;
-  border-radius: 5px;
-  position: relative;
-  .top-sign {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    font-size: 80px;
-  }
-  .bottom-sign {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    font-size: 80px;
-  }
+  font-size: 10rem;
+}
+
+.palos-footer {
+  transform: rotate(180deg);
 }
